@@ -55,12 +55,7 @@ class CompareHashes
     self.check_values_for_errors(@hash_one.values)
     self.check_values_for_errors(@hash_two.values)
 
-    one_types = @hash_one.values.map {|v| v.class }
-    two_types = @hash_two.values.map {|v| v.class }
-
-    if @options == 'shallow' && @hash_one.values == @hash_two.values && one_types == two_types
-      return true
-    elsif @options == 'shallow'
+    if @options == 'shallow'
       shallow = @hash_one.keys.each {|k| self.shallow_compare({ "#{k}" => @hash_one[k] }, { "#{k}" => @hash_two[k] }) }
     elsif @options == 'deep'
       deep = @hash_one.keys.each {|k| self.deep_compare({ "#{k}" => @hash_one[k] }, { "#{k}" => @hash_two[k] }) }
@@ -155,6 +150,7 @@ class CompareHashes
     self.compare_with_key(val_one, val_two, key)
   end
 
+  #---Direct element-to-element comparison---#
   def compare_with_key(one, two, key)
     self.check_values_for_errors([one, two])
 
@@ -179,7 +175,7 @@ class CompareHashes
     end
   end
 
-  #---Value Type Checking---#
+  #---Value Type Checking & Error Raising---#
   def check_values_for_errors(values)
     values.each do |v|
       if value_type_validator(v) == false
