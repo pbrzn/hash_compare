@@ -65,7 +65,6 @@ class CompareHashes
   def deep_compare(element_one, element_two)
     self.check_values_for_errors(element_one)
     self.check_values_for_errors(element_two)
-
     key = element_one.keys.first
     one = element_one.values.first
     two = element_two.values.first
@@ -87,7 +86,7 @@ class CompareHashes
       end
 
       one.each_with_index do |v, i|
-        if !!two[i]
+        if two[i] != nil
           self.check_values_for_errors([v, two[i]])
           if v.class == Hash && two[i].class == Hash
             self.deep_compare(v, two[i])
@@ -114,7 +113,7 @@ class CompareHashes
       end
     elsif one.class == Hash && two.class == Hash
       one.each do |k, v|
-        if !!two[k]
+        if two[k] != nil
           self.deep_compare({ "#{key} --> #{k}" => v }, { "#{key} --> #{k}" => two[k] })
         end
       end
