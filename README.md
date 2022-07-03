@@ -8,7 +8,7 @@ Fork and clone this repo, then navigate to the newly created <b>Hash Compare</b>
 
 While still in the <b>Hash Compare</b> directory, open <b>IRB</b> in your terminal and type `require './lib/compare_hashes.rb'`. You can now avail yourself to the CompareHashes class.
 
-Create a new instance of CompareHashes via `CompareHashes.new` and add two hashes as arguments. You also have the option of adding a third argument: a string stating either "shallow" or "deep". This indicates to the instance whether you would like to do a <i>shallow</i> comparison of the two hashes or a <i>deep</i> comparison.
+Create a new instance of CompareHashes via `CompareHashes.new` and add two hashes as arguments. You also have the option of adding a third argument: a string stating either "shallow" or "deep" (CompareHashes defaults to "shallow"). This indicates to the instance whether you would like to do a <i>shallow</i> comparison of the two hashes or a <i>deep</i> comparison.
 
 NOTE: Requirements for hashes are as follows...
   1) Keys must be strings. Because of this, it is best to use the `=>` syntax, as Ruby automatically changes key types to symbols when you use a colon.
