@@ -18,39 +18,42 @@ Using incorrect key or value types will raise a TypeError.
 To activate and print the results of the comparison, simply call HashCompare's #call method on the newly created instance.
 
 Ex:
-  `CompareHashes.new(
-    {
-      "a" => 6,
-      "b" => ["This", "is", "cool!"],
-      "c" => {
-        "d" => true
-        }
-    },
-    {
-      "a" => 6,
-      "b" => ["This", "is", "great!"],
-      "c" => {
-        "d" => false
-        }
-    }, "deep").call`
+```
+CompareHashes.new(
+  {
+    "a" => 6,
+    "b" => ["This", "is", "cool!"],
+    "c" => {
+      "d" => true
+      }
+  },
+  {
+    "a" => 6,
+    "b" => ["This", "is", "great!"],
+    "c" => {
+      "d" => false
+      }
+  }, "deep").call
+```
+  
+This will print/return a result that looks like this:
 
-  This will print/return a result that looks like this:
-
-  `The array element at index 2, at the key 'b' in both hashes differ...
-  ___1st Hash___
-  At b: array[2] is cool!
-  ___2nd Hash___
-  At b: array[2] is great!
-  ----------------------------------------------------
-  This key common to both hashes has differing values in each hash.
-  ___1st Hash___
-  c --> d: true
-  ___2nd Hash___
-  c --> d: false
-  ----------------------------------------------------
-  These hashes are not equal.
-   => false`
-
+```
+The array element at index 2, at the key 'b' in both hashes differ...
+___1st Hash___
+At b: array[2] is cool!
+___2nd Hash___
+At b: array[2] is great!
+----------------------------------------------------
+This key common to both hashes has differing values in each hash.
+___1st Hash___
+c --> d: true
+___2nd Hash___
+c --> d: false
+----------------------------------------------------
+These hashes are not equal.
+ => false
+```
 ### To Run Test Suite
 
 In the command line, simply type the command `bundle exec rspec spec/compare_hashes.rb` to run the RSpec test suite.
